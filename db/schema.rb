@@ -11,6 +11,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20130817203020) do
+
+  create_table "answers", force: true do |t|
+    t.text     "text"
+    t.integer  "interview_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interviews", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "interview_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interviews_people", force: true do |t|
+    t.integer "interview_id"
+    t.integer "person_id"
+  end
+
+  create_table "interviews_sources", force: true do |t|
+    t.integer "interview_id"
+    t.integer "source_id"
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "bio_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "publications", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.text     "text"
+    t.integer  "interview_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "raw_texts", force: true do |t|
+    t.text     "content"
+    t.integer  "source_id"
+    t.integer  "interview_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sources", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "last_checked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
 
 end

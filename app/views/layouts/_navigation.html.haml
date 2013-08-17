@@ -2,15 +2,8 @@
   .navbar-inner
     .container
       %ul.nav
-        %li.active
-          %a{:href => "#"} Home
-        %li
-          %a{:href => "#"} Projects
-        %li
-          %a{:href => "#"} Services
-        %li
-          %a{:href => "#"} Downloads
-        %li
-          %a{:href => "#"} About
-        %li
-          %a{:href => "#"} Contact
+        = active_link_to 'Home', root_path, active: :exclusive, wrap_tag: :li
+        = active_link_to 'People', people_path, active: :inclusive, wrap_tag: :li
+        = active_link_to 'Publications', publications_path, active: :inclusive, wrap_tag: :li
+        = active_link_to 'Subjects', subjects_path, active: :inclusive, wrap_tag: :li
+        = active_link_to 'About', about_path, active: :inclusive, wrap_tag: :li

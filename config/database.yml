@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: fcm_development
+  database: good_questions_dev
   pool: 20
   username: root
   password: password
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: fcm_test
+  database: good_questions_test
   pool: 20
   username: root
   password: password
@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: fcm_production
+  database: good_questions_prod
   pool: 256
   username: root
   password: password
